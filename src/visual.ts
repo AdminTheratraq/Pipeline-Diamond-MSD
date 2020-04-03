@@ -200,6 +200,15 @@ export class Visual implements IVisual {
                 return d.ProductName ? d.ProductName.toString() : '';
             });
 
+        companies.append('p')
+            .attr('class', 'moa-name')
+            .attr('style', function (d) {
+                let [moAcolor] = moAColorData.filter(cd => cd.moA === d.MoA);
+                return 'color:' + moAcolor.color + ';';
+            }).text(function (d) {
+                return d.MoA ? d.MoA.toString() : '';
+            });
+
         let legendWrap = pipelineWrap.append('div')
             .attr('class', 'legend-wrap');
 
