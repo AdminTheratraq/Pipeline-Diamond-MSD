@@ -182,6 +182,15 @@ export class Visual implements IVisual {
             .attr('class', 'company');
 
         companies.append('p')
+            .attr('class', 'product-name')
+            .attr('style', function (d) {
+                let [moAcolor] = moAColorData.filter(cd => cd.moA === d.MoA);
+                return 'color:' + moAcolor.color + ';';
+            }).text(function (d) {
+                return d.ProductName ? d.ProductName.toString() : '';
+            });
+
+        companies.append('p')
             .attr('class', 'company-name')
             .attr('style', function (d) {
                 let [moAcolor] = moAColorData.filter(cd => cd.moA === d.MoA);
@@ -189,15 +198,6 @@ export class Visual implements IVisual {
             })
             .text(function (d) {
                 return d.Company ? d.Company.toString() : '';
-            });
-
-        companies.append('p')
-            .attr('class', 'product-name')
-            .attr('style', function (d) {
-                let [moAcolor] = moAColorData.filter(cd => cd.moA === d.MoA);
-                return 'color:' + moAcolor.color + ';';
-            }).text(function (d) {
-                return d.ProductName ? d.ProductName.toString() : '';
             });
 
         companies.append('p')
